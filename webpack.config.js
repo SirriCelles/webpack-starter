@@ -21,10 +21,18 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
       }
     ]
   },
   devServer: {
     static: path.resolve(__dirname, './dist')
+  },
+  optimization: {
+    splitChunks: { chunks: "all" }
   }
 }
